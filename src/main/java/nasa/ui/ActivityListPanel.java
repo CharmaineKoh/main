@@ -11,6 +11,7 @@ import javafx.scene.layout.Region;
 
 import nasa.commons.core.LogsCenter;
 import nasa.model.activity.Activity;
+import nasa.model.activity.Priority;
 
 /**
  * Panel containing the list of modules.

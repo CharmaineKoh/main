@@ -46,6 +46,10 @@ public class CommandResult {
         return exit;
     }
 
+    public boolean isCalendar() {
+        return feedbackToUser.equals("Calendar");
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
