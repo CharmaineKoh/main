@@ -5,6 +5,9 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -50,6 +53,8 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+    @FXML
+    private TabPane tabPane;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -171,6 +176,7 @@ public class MainWindow extends UiPart<Stage> {
      * @see Logic#execute(String)
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
@@ -182,6 +188,11 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            //For Calendar
+            if (commandResult.isCalendar()) {
+                selectionModel.select(1);
             }
 
             return commandResult;

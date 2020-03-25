@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
          title="Nasa App" minWidth="100" minHeight="100" onCloseRequest="#handleExit">
   <icons>
@@ -38,14 +40,34 @@
         </MenuBar>
 
 
-        <HBox fx:id="moduleList" styleClass="pane-with-border" minWidth="340" prefWidth="500" prefHeight="1000"
-              AnchorPane.topAnchor="28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-              AnchorPane.bottomAnchor="175.0">
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="moduleListPanelPlaceholder" HBox.hgrow="ALWAYS"/>
-        </HBox>
+        <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                 minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE"
+                 AnchorPane.topAnchor="28.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.bottomAnchor="175.0">
+          <tabs>
+            <Tab text="Modules">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                <HBox fx:id="moduleList" styleClass="pane-with-border" minWidth="340" prefWidth="500" prefHeight="1000"
+                      AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                      AnchorPane.bottomAnchor="0.0">
+                  <padding>
+                    <Insets top="10" right="10" bottom="10" left="10" />
+                  </padding>
+                  <StackPane fx:id="moduleListPanelPlaceholder" HBox.hgrow="ALWAYS"/>
+                </HBox>
+                        </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Calendar">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
 
 
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
